@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+.pytest_cache/
+
+# Storage / local files
+*.jpg
+*.jpeg
+*.png
+*.webp
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Secrets — never commit these
+.env.*
+!.env.example
+*.pem
+*.key

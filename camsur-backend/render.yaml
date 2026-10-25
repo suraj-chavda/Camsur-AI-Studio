@@ -1,0 +1,118 @@
+services:
+  - type: web
+    name: camsur-backend
+    rootDir: camsur-backend
+    runtime: python
+    plan: starter
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/v1/health
+    autoDeployTrigger: commit
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.10
+      - key: APP_NAME
+        value: Camsur AI Studio
+      - key: APP_VERSION
+        value: 1.0.0
+      - key: ENVIRONMENT
+        value: production
+      - key: DEBUG
+        value: false
+      - key: API_PREFIX
+        value: /api/v1
+      - key: CORS_ORIGINS
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_KEY
+        sync: false
+      - key: SUPABASE_MEDIA_BUCKET
+        value: camsur-media
+      - key: SUPABASE_ASSETS_BUCKET
+        value: camsur-backend-images
+      - key: SIGNED_URL_EXPIRES_SEC
+        value: 3600
+      - key: SIGNED_URL_BFL_EXPIRES_SEC
+        value: 7200
+      - key: AI_PROVIDER
+        value: bfl
+      - key: BFL_API_KEY
+        sync: false
+      - key: BFL_API_BASE
+        value: https://api.bfl.ai
+      - key: BFL_MODEL
+        value: flux-2-pro
+      - key: BFL_DUPLICATE_INPUT_IMAGE
+        value: true
+      - key: BFL_GUIDANCE
+        value: 3.0
+      - key: BFL_ITERATE_GUIDANCE
+        value: 2.5
+      - key: BFL_TOGETHER_GUIDANCE
+        value: 3.5
+      - key: BFL_TOGETHER_ITERATE_GUIDANCE
+        value: 3.0
+      - key: BFL_OUTPUT_FIRST_MP_USD
+        value: 0.03
+      - key: BFL_OUTPUT_ADDITIONAL_MP_USD
+        value: 0.015
+      - key: BFL_INPUT_MP_USD
+        value: 0.015
+      - key: PRICING_VERSION
+        value: 1
+      - key: CREDITS_MANUAL_TOPUP_ENABLED
+        value: false
+      - key: BACKGROUND_JOBS_ENABLED
+        value: true
+      - key: BACKGROUND_JOB_INTERVAL_SEC
+        value: 21600
+      - key: MARGIN_MONITOR_WINDOW_DAYS
+        value: 7
+      - key: MARGIN_MONITOR_MIN_SAMPLES
+        value: 3
+      - key: AI_GENERATION_ENABLED
+        value: true
+      - key: GENERATION_MAINTENANCE_MODE
+        value: false
+      - key: MAX_CONCURRENT_GENERATIONS_PER_USER
+        value: 3
+      - key: MAX_GLOBAL_ACTIVE_GENERATIONS
+        value: 100
+      - key: MAX_GENERATIONS_PER_USER_PER_HOUR
+        value: 30
+      - key: MAX_GENERATIONS_PER_USER_PER_DAY
+        value: 100
+      - key: MAX_CREDITS_SPENT_PER_USER_PER_HOUR
+        value: 500
+      - key: MAX_CREDITS_SPENT_PER_USER_PER_DAY
+        value: 2000
+      - key: MAX_GLOBAL_GENERATIONS_PER_HOUR
+        value: 5000
+      - key: MAX_UPLOAD_MB
+        value: 10
+      - key: MAX_IMAGE_WIDTH
+        value: 8192
+      - key: MAX_IMAGE_HEIGHT
+        value: 8192
+      - key: MAX_IMAGE_PIXELS
+        value: 25000000
+      - key: UPLOAD_RETENTION_DAYS
+        value: 30
+      - key: OUTPUT_RETENTION_DAYS
+        value: 90
+      - key: SAVED_OUTPUT_RETENTION_DAYS
+        value: 0
+      - key: RATE_LIMIT_ENABLED
+        value: true
+      - key: RATE_LIMIT_WINDOW_SEC
+        value: 60
+      - key: RATE_LIMIT_IP_PER_MINUTE
+        value: 120
+      - key: RATE_LIMIT_AUTH_PER_MINUTE
+        value: 10
+      - key: RATE_LIMIT_UPLOAD_PER_MINUTE
+        value: 20
+      - key: RATE_LIMIT_GENERATE_PER_MINUTE
+        value: 10
