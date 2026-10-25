@@ -1,6 +1,6 @@
-# Camsur AI Studio — Mobile App
+# Camsur AI Studio — Flutter AI Photo App
 
-A Flutter app that turns everyday selfies into studio-quality photos: headshots, passport photos, background edits and more.
+Part of the [Camsur AI Studio monorepo](../README.md). A Flutter app that turns everyday selfies into studio-quality photos: headshots, passport photos, background edits and more.
 
 It talks to the Camsur backend, which lives next to it in this repo: [camsur-backend](../camsur-backend).
 

@@ -1,0 +1,23 @@
+# Camsur AI Studio
+
+> Open-source AI photo studio: a Flutter mobile app and a FastAPI + Supabase backend that turn selfies into studio-quality photos (AI headshots, LinkedIn photos, passport photos, background edits) using FLUX image models. MIT licensed monorepo.
+
+Camsur AI Studio has two parts in one repository: `camsur-flutter` (mobile app, Dart/Flutter, GetX, Dio) and `camsur-backend` (Python 3.12, FastAPI, Supabase auth/database/storage, Black Forest Labs FLUX). It includes a credit-based wallet with atomic, idempotent spend/refund, automatic refunds on failed generations, rate limits, cost controls, a margin monitor, an admin API and storage retention cleanup.
+
+## Docs
+- [README](README.md): overview, screenshots, features, quick start, FAQ
+- [Backend README](camsur-backend/README.md): setup, settings, scripts, tests, deploy
+- [Backend architecture](camsur-backend/ARCHITECTURE.md): layers, conventions, response format
+- [Credit system](camsur-backend/docs/CREDIT_SYSTEM.md): charge, refund, idempotency
+- [Generation lifecycle](camsur-backend/docs/GENERATION_LIFECYCLE.md): statuses and failure handling
+- [Cost controls](camsur-backend/docs/COST_CONTROLS.md): limits, kill switch, margin circuit breaker
+- [Storage lifecycle](camsur-backend/docs/STORAGE_LIFECYCLE.md): uploads, outputs, retention
+- [Mobile app README](camsur-flutter/README.md): run, settings, sign-in setup
+
+## Source
+- [camsur-backend/app](camsur-backend/app): routes, services, providers, schemas
+- [camsur-backend/sql](camsur-backend/sql): database schema, migrations, storage policies
+- [camsur-flutter/lib](camsur-flutter/lib): app, core, data, features
+
+## Optional
+- [LICENSE](LICENSE): MIT

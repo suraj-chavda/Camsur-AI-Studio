@@ -1,6 +1,8 @@
-# Camsur AI Studio — Backend
+# Camsur AI Studio — Backend (FastAPI + Supabase AI image API)
 
-The API behind **Camsur AI Studio**, an app that turns everyday selfies into studio-quality photos (headshots, passport photos, background edits and more).
+Part of the [Camsur AI Studio monorepo](../README.md). The API behind **Camsur AI Studio**, an app that turns everyday selfies into studio-quality photos (headshots, passport photos, background edits and more).
+
+An open-source AI image generation backend with auth, a credits wallet, rate limits and an admin API.
 
 Built with **FastAPI**, **Supabase** (auth, database, storage) and **FLUX** image models from Black Forest Labs.
 

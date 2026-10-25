@@ -4,7 +4,7 @@
 
 **Turn everyday selfies into studio-quality photos with AI.**
 
-Headshots, LinkedIn profiles, passport photos and background edits, all from your phone.
+An open-source **AI photo editing and generation app**: a **Flutter** mobile app plus a **FastAPI + Supabase** backend, powered by **FLUX** image models. Create AI headshots, LinkedIn profile photos, passport photos and background edits from a selfie.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Flutter](https://img.shields.io/badge/Flutter-Mobile%20App-02569B?logo=flutter&logoColor=white)](camsur-flutter)
@@ -30,10 +30,23 @@ Headshots, LinkedIn profiles, passport photos and background edits, all from you
 - [Tech stack](#tech-stack)
 - [Quick start](#quick-start)
 - [Security](#security)
+- [FAQ](#faq)
 - [Contributing](#contributing)
 - [License](#license)
 
 ## About
+
+**Camsur AI Studio is an open-source, full-stack AI photo studio.** It is a mobile app (Flutter) and an API (FastAPI) that turn casual selfies into professional photos, with a built-in credit wallet for pay-per-use billing.
+
+| | |
+|---|---|
+| **Type** | Full-stack AI image generation app (monorepo) |
+| **Mobile app** | Flutter 3 / Dart 3, GetX, Dio |
+| **Backend** | Python 3.12, FastAPI, Pydantic |
+| **Database, auth, storage** | Supabase (Postgres, Auth, Storage) |
+| **AI model** | Black Forest Labs FLUX (image editing) |
+| **Use cases** | AI headshots, LinkedIn photos, passport photos, background removal, style edits |
+| **License** | MIT |
 
 Camsur AI Studio is a full-stack AI photo app. A user picks a tool (for example *AI Headshot*), adds a selfie, and gets back a clean, studio-quality photo in seconds.
 
@@ -192,11 +205,43 @@ flutter run --dart-define=API_BASE_URL=http://localhost:8000/api/v1
 - Credit changes use idempotent database functions, so retries never double-charge.
 - Use your **own** Supabase project and API keys. Never commit them.
 
-Found a security problem? Please contact the maintainer privately instead of opening a public issue.
+Found a security problem? Please read [SECURITY.md](SECURITY.md) and report it privately.
+
+## FAQ
+
+**What is Camsur AI Studio?**
+It is an open-source AI photo app. Users pick a tool such as *AI Headshot*, add a selfie, and get a studio-quality photo back. It includes a Flutter mobile app and a FastAPI backend.
+
+**Is it free to use?**
+Yes. The code is released under the [MIT License](LICENSE), so you can use, change and sell your own version. Running it costs whatever your Supabase project and AI provider charge.
+
+**Which AI model does it use?**
+It uses Black Forest Labs **FLUX** image models through an API (the default is `flux-2-pro`). The provider layer lives in [`camsur-backend/app/providers`](camsur-backend/app/providers), so other providers can be added.
+
+**What do I need to run it?**
+Python 3.12, Flutter, a free [Supabase](https://supabase.com) project and a [Black Forest Labs](https://docs.bfl.ai) API key. See the [Quick start](#quick-start).
+
+**How do credits work?**
+Users spend whole-number credits for each generation. The price of each tool is set on the server. Credits are spent in one safe database step, and they are **refunded automatically** if a generation fails. Retrying a request never charges twice.
+
+**Can I use it as a template for my own AI app?**
+Yes. It is a complete example of an AI SaaS backend: auth, a credits wallet, rate limits, cost controls, an admin API and a mobile client.
+
+**Which sign-in methods are supported?**
+Email and password, Google and Apple, all through Supabase Auth.
+
+**Does it run on Android and iOS?**
+The app is built with Flutter, so it targets Android and iOS (the repo also includes macOS, web, Windows and Linux project folders).
+
+**How are photos stored and deleted?**
+Uploads and results go to private Supabase Storage and are shared with short-lived signed links. By default, uploads are deleted after 30 days and results after 90 days. Both are settings you can change.
+
+**Where is the API documentation?**
+Start the backend and open `http://localhost:8000/docs` for interactive OpenAPI docs. See also [`ARCHITECTURE.md`](camsur-backend/ARCHITECTURE.md).
 
 ## Contributing
 
-Ideas and pull requests are welcome.
+Ideas and pull requests are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) first.
 
 1. Fork this repository.
 2. Create a branch: `git checkout -b my-change`

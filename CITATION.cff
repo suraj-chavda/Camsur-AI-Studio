@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this project, please cite it as below."
+title: "Camsur AI Studio"
+abstract: "Open-source AI photo studio: a Flutter mobile app and a FastAPI + Supabase backend that turn selfies into studio-quality photos using FLUX image models."
+type: software
+authors:
+  - family-names: Chavda
+    given-names: Suraj
+repository-code: "https://github.com/suraj-chavda/Camsur-AI-Studio"
+url: "https://github.com/suraj-chavda/Camsur-AI-Studio"
+license: MIT
+version: 1.0.0
+date-released: "2026-10-25"
+keywords:
+  - ai photo editor
+  - ai headshot generator
+  - flutter
+  - fastapi
+  - supabase
+  - image generation
+  - flux
+  - monorepo
